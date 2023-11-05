@@ -32,8 +32,11 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 
 // instantiate controls
 const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+controls.autoRotate = true
 
 const renderloop = () => {
+  controls.update()
   renderer.render(scene, camera)
   window.requestAnimationFrame(renderloop)
 }
