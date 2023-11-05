@@ -27,5 +27,15 @@ const canvas = document.querySelector('canvas.threejs')
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas
 })
+
 renderer.setSize(window.innerWidth, window.innerHeight)
-renderer.render(scene, camera)
+
+// instantiate controls
+const controls = new OrbitControls(camera, canvas)
+
+const renderloop = () => {
+  renderer.render(scene, camera)
+  window.requestAnimationFrame(renderloop)
+}
+
+renderloop()
